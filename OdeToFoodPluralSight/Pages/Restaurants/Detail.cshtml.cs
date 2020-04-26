@@ -8,6 +8,9 @@ namespace OdeToFoodPluralSight.Pages.Restaurants
     public class Detail : PageModel
     {
         private readonly IRestaurantData restaurantData;
+
+        [TempData]
+        public string Message { get; set; }
         public Restaurant Restaurant { get; set; }
 
         public Detail(IRestaurantData restaurantData)

@@ -2,6 +2,11 @@
 
 @model OdeToFoodPluralSight.Pages.Restaurants.Detail
 
+@if (Model.Message != null)
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
+
 @{
     ViewData["Title"] = "Detail";
 }

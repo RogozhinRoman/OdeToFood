@@ -8,6 +8,9 @@ namespace OdeToFood.Data
     {
         IEnumerable<Restaurant> GetRestaurantsByName(string name = null);
         Restaurant Get(int id);
+        Restaurant Update(Restaurant updatedRestaurant);
+        Restaurant Add(Restaurant newRestaurant);
+        int Commit();
     }
 
     public class InMemoryRestaurantData : IRestaurantData
@@ -23,6 +26,7 @@ namespace OdeToFood.Data
                 new Restaurant{Id = 3, Name = "La costa", Location = "California", Cuisine = CuisineType.Mexican},
             };    
         }
+        
         public IEnumerable<Restaurant> GetRestaurantsByName(string name)
         {
             return restaurants
@@ -33,6 +37,33 @@ namespace OdeToFood.Data
         public Restaurant Get(int id)
         {
             return restaurants.SingleOrDefault(r => r.Id == id);
+        }
+
+        public Restaurant Update(Restaurant updatedRestaurant)
+        {
+            var restaurant = restaurants.SingleOrDefault(r => r.Id == updatedRestaurant.Id);
+
+            if (restaurant != null)
+            {
+                restaurant.Name = updatedRestaurant.Name;
+                restaurant.Location = updatedRestaurant.Location;
+                restaurant.Cuisine = updatedRestaurant.Cuisine;
+            }
+
+            return restaurant;
+        }
+
+        public Restaurant Add(Restaurant newRestaurant)
+        {
+            restaurants.Add(newRestaurant);
+            newRestaurant.Id = restaurants.Max(r => r.Id) + 1;
+
+            return newRestaurant;
+        }
+
+        public int Commit()
+        {
+            return 0;
         }
     }
 }

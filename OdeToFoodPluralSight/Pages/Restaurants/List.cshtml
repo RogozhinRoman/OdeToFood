@@ -28,9 +28,14 @@
                 <a class="btn btn-secondary" asp-page="./Detail" asp-route-restaurantId="@restaurant.Id">
                     <i class="fas fa-atom"></i>
                 </a>
+                <a class="btn btn-secondary" asp-page="./Edit" asp-route-restaurantId="@restaurant.Id">
+                    <i class="fas fa-edit"></i>
+                </a>
             </td>
         </tr>
     }
 </table>
+
+<a asp-page="./Edit" class="btn btn-secondary">Add New</a>
 
 <div>@Model.Message</div>
