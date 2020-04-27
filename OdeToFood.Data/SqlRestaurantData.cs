@@ -55,5 +55,10 @@ namespace OdeToFood.Data
         {
             return dbContext.SaveChanges();
         }
+
+        public int GetCountOfRestaurants()
+        {
+            return dbContext.Restaurants.Count();
+        }
     }
 }

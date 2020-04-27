@@ -1,6 +1,7 @@
 @page
 @model OdeToFoodPluralSight.Pages.Restaurants.List
 @{
+    ViewData["Title"] = "Restaurants";
 }
 
 <h1>Restaurants</h1>
@@ -17,25 +18,14 @@
         </div>
     </div>
 </form>
-<table class="table">
-    @foreach (var restaurant in Model.RestaurantsList)
-    {
-        <tr>
-            <td>@restaurant.Name</td>
-            <td>@restaurant.Location</td>
-            <td>@restaurant.Cuisine</td>
-            <td>
-                <a class="btn btn-secondary" asp-page="./Detail" asp-route-restaurantId="@restaurant.Id">
-                    <i class="fas fa-search"></i>
-                </a>
-                <a class="btn btn-secondary" asp-page="./Edit" asp-route-restaurantId="@restaurant.Id">
-                    <i class="fas fa-edit"></i>
-                </a>
-            </td>
-        </tr>
-    }
-</table>
+@foreach (var restaurant in Model.RestaurantsList)
+{
+    <partial name="_Summary" model="restaurant"/>
+}
 
 <a asp-page="./Edit" class="btn btn-secondary">Add New</a>
 
-<div>@Model.Message</div>
+@section footer
+{
+    <div>@Model.Message</div>    
+}

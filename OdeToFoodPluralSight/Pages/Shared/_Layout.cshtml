@@ -39,11 +39,13 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - OdeToFoodPluralSight - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+<footer class="border-top footer text-muted">
+    <vc:restaurant-count></vc:restaurant-count>
+    <div class="container">
+        @RenderSection("footer", required: false)
+        &copy; 2020 - OdeToFoodPluralSight - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    </div>
+</footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
