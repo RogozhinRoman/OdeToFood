@@ -32,6 +32,7 @@ namespace OdeToFoodPluralSight
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
             
             services.AddRazorPages();
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,12 +51,18 @@ namespace OdeToFoodPluralSight
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseNodeModules();
+            app.UseCookiePolicy();
 
             app.UseRouting();
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+                endpoints.MapControllers();
+            });
         }
     }
 }
